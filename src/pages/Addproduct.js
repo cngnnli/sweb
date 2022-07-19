@@ -6,7 +6,7 @@ import Score from "../contexts/Context";
 
 function Addproduct () {
     const [ divek, setDivek ] = useState();
-    const [ a, setA ] = useState("");
+    const [ dyn, setDyn ] = useState("");
     const [ valDvd, setValDvd ] = useState(0);
     const [ valFur, setValFur ] = useState([0, 0, 0]);
     const [ valBook, setValBook] = useState(0);
@@ -14,7 +14,7 @@ function Addproduct () {
 
 
     const Navigate = useNavigate();
-    const { deneme, setDeneme } = useContext(Score);
+    const { contents, setContents } = useContext(Score);
     
     function delay(ms) {
         return new Promise((resolve) => {
@@ -23,15 +23,15 @@ function Addproduct () {
       } 
     
     async function handleClick () {
-            let squs = [...deneme];
-            if (a === "DVD"){
+            let squs = [...contents];
+            if (dyn === "DVD"){
                 squs.push(
                     <div key={new Date().valueOf()} className='box'>
                         <div>
-                            <input className="checks" type="checkbox"></input>
+                            <input className="delete-checkbox" type="checkbox"></input>
                         </div>
                         <div>
-                            <div>
+                            <div className="col3">
                                 <span>{specs[0]}</span>
                                 <span>{specs[1]}</span>
                                 <span>{specs[2]} $</span>
@@ -40,14 +40,14 @@ function Addproduct () {
                         </div>
                     </div>
                 )
-            } else if (a === "Furniture"){
+            } else if (dyn === "Furniture"){
                 squs.push(
                     <div key={new Date().valueOf()} className='box'>
                         <div>
-                            <input className="checks" type="checkbox"></input>
+                            <input className="delete-checkbox" type="checkbox"></input>
                         </div>
                         <div>
-                            <div>
+                            <div className="col3">
                                 <span>{specs[0]}</span>
                                 <span>{specs[1]}</span>
                                 <span>{specs[2]} $</span>
@@ -56,14 +56,14 @@ function Addproduct () {
                         </div>
                     </div>
                 )
-            } else if (a === "Book"){
+            } else if (dyn === "Book"){
                 squs.push(
                     <div key={new Date().valueOf()} className='box'>
                         <div>
-                            <input className="checks" type="checkbox"></input>
+                            <input className="delete-checkbox" type="checkbox"></input>
                         </div>
                         <div>
-                            <div className="col1">
+                            <div className="col3">
                                 <span>{specs[0]}</span>
                                 <span>{specs[1]}</span>
                                 <span>{specs[2]} $</span>
@@ -73,19 +73,24 @@ function Addproduct () {
                     </div>
                 )
             }
-            setDeneme(squs);
+            setContents(squs);
             await delay(25);
             Navigate("/");
     }
 
     const div1 = () => {
         return (
-            <div>
-                <div>
-                    <span>Size (MB)</span>
+            <div className="general">
+                <div id="DVD">
+                    <div className="col1">
+                        <span>Size (MB)</span>
+                    </div>
+                    <div className="col2">
+                        <input id="fdvd" type="text" onChange={() => fdvd()} autoComplete="off" placeholder="#size"></input>
+                    </div>
                 </div>
-                <div>
-                    <input id="fdvd" type="text" onChange={() => fdvd()} autoComplete="off"></input>
+                <div className="info">
+                    Please provide size of DVD in MB (Megabyte).
                 </div>
             </div>
         )
@@ -97,16 +102,21 @@ function Addproduct () {
 
     const div2 = () => {
         return (
-            <div>
-                <div>
-                    <span>Height</span>
-                    <span>Width</span>
-                    <span>Length</span>
+            <div className="general">
+                <div id="Furniture">
+                    <div className="col1">
+                        <span>Height (CM)</span>
+                        <span>Width (CM)</span>
+                        <span>Length (CM)</span>
+                    </div>
+                    <div className="col2">
+                        <input id="ffur1" type="text" onChange={() => ffur()} autoComplete="off" placeholder="#height"></input>
+                        <input id="ffur2" type="text" onChange={() => ffur()} autoComplete="off" placeholder="#width"></input>
+                        <input id="ffur3" type="text" onChange={() => ffur()} autoComplete="off" placeholder="#length"></input>
+                    </div>
                 </div>
-                <div>
-                    <input id="ffur1" type="text" onChange={() => ffur()} autoComplete="off"></input>
-                    <input id="ffur2" type="text" onChange={() => ffur()} autoComplete="off"></input>
-                    <input id="ffur3" type="text" onChange={() => ffur()} autoComplete="off"></input>
+                <div className="info">
+                    Please provide dimensions in H x W x L format.
                 </div>
             </div>
         )
@@ -118,13 +128,19 @@ function Addproduct () {
 
     const div3 = () => {
         return (
-            <div>
-                <div>
-                    <span>Weight (KG)</span>
+            <div className="general">
+                <div id="Book">
+                    <div className="col1">
+                        <span>Weight (KG)</span>
+                    </div>
+                    <div className="col2">
+                        <input id="fbook" type="text" onChange={() => fbook()} autoComplete="off" placeholder="#weight"></input>
+                    </div>
                 </div>
-                <div>
-                    <input id="fbook" type="text" onChange={() => fbook()} autoComplete="off"></input>
+                <div className="info">
+                    Please provide size of book weight in KG (Kilogram).
                 </div>
+                
             </div>
         )
     }
@@ -135,8 +151,8 @@ function Addproduct () {
     
 
     const handie = () => {
-         setA(document.querySelector("#selection").value);
-         var b = document.querySelector("#selection").value;
+         setDyn(document.querySelector("#productType").value);
+         var b = document.querySelector("#productType").value;
         if (b === "DVD"){
             setDivek(div1)
         } else if (b === "Furniture"){
@@ -154,31 +170,32 @@ function Addproduct () {
 
     
   return (
-    <div>
+    <div className="container">
         <div className="upper">
             <div>
                 <span id="id1">Product Add</span>
             </div>
             <div>
                 <span id="id2"><button onClick={() => handleClick()}><Link to="/">Save</Link></button></span>
-                <span id="id3">Cancel</span>
+                <span id="id3"><button><Link to="/">Cancel</Link></button></span>
             </div>
         </div>
-        <div className='forms'>
+        <hr className="up"></hr>
+        <div id="product_form">
             <div className="col1">
                 <span>SKU</span>
                 <span>Name</span>
                 <span>Price ($)</span>
             </div>
             <div className="col2">
-                <span><input id="sku" type="text" onChange={() => spec()} autoComplete="off"></input></span>
-                <span><input id="name" type="text" onChange={() => spec()} autoComplete="off"></input></span>
-                <span><input id="price" type="text" onChange={() => spec()} autoComplete="off"></input></span>
+                <span><input id="sku" type="text" onChange={() => spec()} autoComplete="off" placeholder="#sku"></input></span>
+                <span><input id="name" type="text" onChange={() => spec()} autoComplete="off" placeholder="#name"></input></span>
+                <span><input id="price" type="text" onChange={() => spec()} autoComplete="off" placeholder="#price"></input></span>
             </div>
         </div>
-        <div>
+        <div id="typeSwitcher">
             Type Switcher 
-            <select id="selection" onChange={() => handie()}>
+            <select id="productType" onChange={() => handie()}>
                 <option value="">Type Switcher</option>
                 <option value="DVD">DVD</option>
                 <option value="Furniture">Furniture</option>
@@ -187,6 +204,10 @@ function Addproduct () {
         </div>
         <div className="specs2">
                 {divek}
+        </div>
+        <hr className="bottom"></hr>
+        <div className="lower">
+            Scandiweb Test assignment
         </div>
     </div>
   )

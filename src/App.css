@@ -38,53 +38,87 @@
 }
 
 .container {
-  margin-left: 20px;
+  margin-left: 8%;
+  margin-top: 30px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 .box {
-  border: 1px solid black;
-  width: 200px;
-  height: 200px;
+  border: 3px solid black;
+  width: 250px;
+  height: 150px;
   display: inline-block;
   min-width: 100px;
   min-height: 100px;
+  margin-top: 8%;
+  margin-left: 10%;
 }
 
 .box span {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 250px;
   text-align: center;
-  margin-top: 10px;
 }
 
 .boxes {
   display: grid;
-  grid-template-columns: 200px 200px 200px 200px;
+  grid-template-columns: 300px 300px 300px 300px;
   flex-direction: row;
-  gap: 10px;
 }
 
 .upper {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
+  width: 1200px;
 }
 
 #id1 {
+  margin-left: 32px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.up {
+  width: 85%;
   margin-left: 10px;
+  margin-top: 10px;
+  color: black;
+  height: 1.5px;
+  background-color: black;
+}
+
+.bottom {
+  position: fixed;
+  width: 85%;
+  margin-left: 10px;
+  bottom: 60px;
+  color: black;
+  height: 2px;
+  background-color: black;
 }
 
 #id2 {
-  margin-left: 500px;
+  font-family: inherit;
+  margin-left: 820px;
+  box-shadow: 3px 5px;
 }
 
 #id3 {
-  margin-left: 50px;
+  font-family: inherit;
+  margin-left: 30px;
+  box-shadow: 3px 5px;
 }
 
-.checks {
-  margin-top: 10px;
-  margin-left: 10px;
+#delete-product-btn {
+  font-family: inherit;
+  margin-left: 30px;
+  box-shadow: 3px 5px;
+}
+
+.delete-checkbox {
+  margin-top: 20px;
+  margin-left: 15px;
 }
 
 .specs {
@@ -93,25 +127,116 @@
   align-items: center;
 }
 
-.forms {
+#product_form {
   display: flex;
+  margin-left: 30px;
+}
+
+#product_form span {
+  margin-top: 10px;
 }
 
 .col1 {
   display: flex;
   flex-direction: column;
   width: 100px;
-  margin-left: 10px;
+  margin-top: 15px;
 }
 
 .col2 {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
+}
+
+.col3 {
+  font-size: 15px;
 }
 
 .specs2 {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+  margin-left: 30px;
+}
+
+.lower {
+  position: fixed;
+  text-align: center;
+  left: 650px;
+  bottom: 40px;
+  font-size: 14px;
+}
+
+#typeSwitcher {
+  margin-left: 30px;
+}
+
+#productType {
+  margin-top: 50px;
+  margin-left: 20px;
+  height: 30px;
+}
+
+.general {
+  background-color: rgb(226, 217, 217);
+  width: 400px;
+  padding-left: 20px;
+}
+
+#Furniture {
+  display: flex;
+  width: 400px;
+}
+
+#DVD {
+  display: flex;
+  width: 400px;
+}
+
+#Book {
+  display: flex;
+  width: 400px;
+}
+
+#Furniture span {
+  display: flex;
+  margin-top: 10px;
+}
+
+#Furniture input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+
+#DVD span {
+  display: flex;
+  margin-top: 10px;
+}
+
+#DVD input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+
+#Book span {
+  display: flex;
+  margin-top: 10px;
+}
+
+#Book input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+
+.info {
   margin-top: 20px;
-  margin-left: 10px;
+  margin-bottom: 10px;
+
 }
